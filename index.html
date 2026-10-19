@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admirable People: Advanced Vocabulary & Idioms (B1+)</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Phosphor Icons for clean UI elements -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+              700: '#6d28d9',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* 3D Perspective for realistic card flipping */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+    /* Smooth transitions */
+    .card-transition {
+      transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    /* Printable styling rules */
+    @media print {
+      body {
+        background: white !important;
+        color: black !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-only {
+        display: block !important;
+      }
+      .break-inside-avoid {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col font-sans selection:bg-brand-500 selection:text-white">
+
+  <!-- Navigation Header -->
+  <header class="bg-white/80 backdrop-blur border-b border-slate-200 sticky top-0 z-40 no-print">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+          <i class="ph-bold ph-sparkle text-xl"></i>
+        </div>
+        <div>
+          <h1 class="text-base sm:text-lg font-bold text-slate-900 leading-tight">Admirable People</h1>
+          <p class="text-xs text-slate-500 font-medium">B1+ Vocabulary & Idioms Study Hub</p>
+        </div>
+      </div>
+
+      <!-- Tab Switcher -->
+      <nav class="flex p-1 bg-slate-100 rounded-xl border border-slate-200/80">
+        <button id="tab-warmup" onclick="switchTab('warmup')" class="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 bg-white text-brand-700 shadow-sm">
+          <i class="ph-bold ph-puzzle-piece text-base"></i>
+          <span>Warm-up: Match</span>
+        </button>
+        <button id="tab-flashcards" onclick="switchTab('flashcards')" class="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all duration-200">
+          <i class="ph-bold ph-cards text-base"></i>
+          <span>Flashcards</span>
+        </button>
+        <button id="tab-quiz" onclick="switchTab('quiz')" class="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all duration-200">
+          <i class="ph-bold ph-seal-question text-base"></i>
+          <span>Practice Quiz</span>
+        </button>
+        <button id="tab-worksheet" onclick="switchTab('worksheet')" class="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all duration-200">
+          <i class="ph-bold ph-article text-base"></i>
+          <span>Study Sheet</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
+
+    <!-- ==================== TAB 0: WARM-UP / MEANING MATCH ==================== -->
+    <section id="section-warmup" class="transition-opacity duration-300">
+      <div class="max-w-4xl mx-auto">
+        <!-- Section Intro & Round Selector -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 p-5 sm:p-6 mb-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-50 text-amber-700 border border-amber-200 uppercase tracking-wide">
+                Inductive Discovery
+              </span>
+              <span class="text-xs text-slate-400 font-medium">B1+ Pre-Reading Warm-Up</span>
+            </div>
+            <h2 class="text-lg sm:text-xl font-bold text-slate-900">Guess & Match the Meanings</h2>
+            <p class="text-xs sm:text-sm text-slate-500">Connect each vocabulary phrase to its plain definition before formal study.</p>
+          </div>
+
+          <!-- Round Navigation & Hint Trigger -->
+          <div class="flex items-center flex-wrap gap-2.5">
+            <div class="flex items-center p-1 bg-slate-100 rounded-xl text-xs font-semibold">
+              <button onclick="setWarmupRound(0)" id="round-btn-0" class="px-3 py-1.5 rounded-lg bg-white text-brand-700 shadow-sm transition-all">
+                Round 1 (Traits)
+              </button>
+              <button onclick="setWarmupRound(1)" id="round-btn-1" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition-all">
+                Round 2 (Actions)
+              </button>
+              <button onclick="setWarmupRound(2)" id="round-btn-2" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition-all">
+                Round 3 (Influence)
+              </button>
+            </div>
+
+            <button onclick="revealMatchClue()" title="Show a helpful hint for the selected item" class="px-3 py-1.5 rounded-xl border border-amber-200 bg-amber-50/80 hover:bg-amber-100 text-amber-800 text-xs font-semibold flex items-center gap-1.5 transition-all">
+              <i class="ph-bold ph-lightbulb text-amber-600 text-sm"></i>
+              <span>Hint</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Round Progress Banner -->
+        <div class="flex items-center justify-between text-xs font-medium text-slate-500 mb-2 px-1">
+          <span id="match-progress-text">Matched: 0 / 6</span>
+          <span id="match-round-title" class="text-slate-600 font-semibold">Round 1: Personality Traits & Character</span>
+        </div>
+        <div class="w-full bg-slate-200 rounded-full h-2 mb-6 overflow-hidden">
+          <div id="match-progress-bar" class="bg-gradient-to-r from-brand-600 to-indigo-500 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+
+        <!-- Interactive Columns Area -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6">
+          <!-- Column A: Vocabulary Terms -->
+          <div class="bg-slate-100/70 p-4 sm:p-5 rounded-2xl border border-slate-200/80">
+            <h3 class="text-xs uppercase font-bold tracking-wider text-slate-500 mb-3 flex items-center justify-between">
+              <span>Column A: Words / Phrases</span>
+              <span class="text-[10px] text-brand-600 bg-brand-50 px-2 py-0.5 rounded-full font-semibold border border-brand-100">Step 1: Choose word</span>
+            </h3>
+            <div id="col-terms" class="space-y-2.5">
+              <!-- Dynamically populated term buttons -->
+            </div>
+          </div>
+
+          <!-- Column B: Simplified Level-Appropriate Definitions -->
+          <div class="bg-slate-100/70 p-4 sm:p-5 rounded-2xl border border-slate-200/80">
+            <h3 class="text-xs uppercase font-bold tracking-wider text-slate-500 mb-3 flex items-center justify-between">
+              <span>Column B: Plain Meanings (B1)</span>
+              <span class="text-[10px] text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full font-semibold border border-indigo-100">Step 2: Match meaning</span>
+            </h3>
+            <div id="col-defs" class="space-y-2.5">
+              <!-- Dynamically populated definition buttons -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Round Completion Modal / Banner -->
+        <div id="match-completed-banner" class="hidden bg-emerald-50 border border-emerald-200 rounded-2xl p-6 text-center shadow-sm transition-all mb-6">
+          <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full mx-auto flex items-center justify-center text-2xl mb-2">
+            <i class="ph-bold ph-check-fat"></i>
+          </div>
+          <h3 class="text-lg font-bold text-emerald-950 mb-1">Round Completed!</h3>
+          <p id="match-completed-message" class="text-xs sm:text-sm text-emerald-800 mb-4">
+            You successfully discovered all expressions in this set.
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <button onclick="nextWarmupRoundOrFlashcards()" id="btn-next-round" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs sm:text-sm shadow-md transition-all flex items-center gap-1.5">
+              <span>Next Round</span> <i class="ph-bold ph-arrow-right"></i>
+            </button>
+            <button onclick="resetCurrentMatchRound()" class="px-4 py-2.5 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold text-xs sm:text-sm transition-all flex items-center gap-1.5">
+              <i class="ph-bold ph-arrow-counter-clockwise"></i> Replay Round
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== TAB 1: FLASHCARDS ==================== -->
+    <section id="section-flashcards" class="hidden transition-opacity duration-300">
+      <div class="max-w-xl mx-auto">
+        <!-- Flashcard Filter & Stats Header -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <button data-category="all" onclick="setFilter('all')" class="filter-btn active-filter px-3 py-1.5 rounded-full text-xs font-semibold bg-brand-600 text-white shadow-sm transition-all">All (16)</button>
+            <button data-category="traits" onclick="setFilter('traits')" class="filter-btn px-3 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 transition-all">Traits</button>
+            <button data-category="actions" onclick="setFilter('actions')" class="filter-btn px-3 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 transition-all">Actions</button>
+            <button data-category="influence" onclick="setFilter('influence')" class="filter-btn px-3 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 transition-all">Influence</button>
+          </div>
+
+          <div class="flex items-center gap-2 text-xs text-slate-500 font-medium">
+            <span>Mastered: <strong id="mastered-count" class="text-emerald-600 font-bold">0</strong> / <span id="total-available-count">16</span></span>
+            <button onclick="resetMastered()" title="Reset mastered progress" class="text-slate-400 hover:text-rose-500 transition-colors p-1">
+              <i class="ph-bold ph-arrow-counter-clockwise text-sm"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-2 px-1">
+          <span id="card-index-indicator">Card 1 of 16</span>
+          <span class="text-[11px] text-slate-400 font-normal">Click or press Space to flip</span>
+        </div>
+        <div class="w-full bg-slate-200 rounded-full h-1.5 mb-5 overflow-hidden">
+          <div id="card-progress-bar" class="bg-gradient-to-r from-brand-600 to-indigo-500 h-1.5 rounded-full transition-all duration-300" style="width: 6.25%"></div>
+        </div>
+
+        <!-- 3D Flippable Card Container -->
+        <div class="perspective-1000 w-full min-h-[340px] sm:min-h-[360px] cursor-pointer select-none" onclick="toggleCardFlip()">
+          <div id="flashcard-element" class="relative w-full h-full transform-style-3d card-transition bg-transparent min-h-[340px] sm:min-h-[360px] rounded-2xl shadow-md border border-slate-200/80 hover:shadow-lg">
+            
+            <!-- Card Front (Word & Category) -->
+            <div class="absolute inset-0 backface-hidden bg-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-slate-200/60">
+              <div class="flex items-center justify-between">
+                <span id="card-category-badge" class="px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-brand-50 text-brand-700 border border-brand-100">
+                  Traits & Character
+                </span>
+                <div class="flex items-center gap-2">
+                  <div id="card-mastered-indicator" class="hidden items-center gap-1 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                    <i class="ph-fill ph-check-circle"></i> Mastered
+                  </div>
+                  <button type="button" onclick="event.stopPropagation(); speakWord();" title="Listen to pronunciation" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-brand-50 hover:text-brand-600 text-slate-600 flex items-center justify-center transition-all">
+                    <i class="ph-bold ph-speaker-high text-base"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="text-center my-auto py-6">
+                <h3 id="card-term" class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-2">
+                  Resilient
+                </h3>
+                <span id="card-pos" class="inline-block text-xs font-semibold text-slate-400 italic">
+                  adjective
+                </span>
+              </div>
+
+              <div class="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-100">
+                <button type="button" id="card-btn-master" onclick="event.stopPropagation(); toggleMasteryCurrent();" class="text-xs px-3 py-1 rounded-full border border-slate-200 text-slate-600 hover:border-emerald-400 hover:text-emerald-600 transition-all flex items-center gap-1">
+                  <i class="ph-bold ph-check"></i> Mark Mastered
+                </button>
+                <span class="flex items-center gap-1 text-slate-400">
+                  <i class="ph-bold ph-arrows-clockwise"></i> Click to flip
+                </span>
+              </div>
+            </div>
+
+            <!-- Card Back (Definition & Example) -->
+            <div class="absolute inset-0 backface-hidden rotate-y-180 bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 text-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-inner">
+              <div class="flex items-center justify-between text-xs font-semibold text-indigo-300">
+                <span class="uppercase tracking-wider">Meaning & Usage</span>
+                <span class="bg-indigo-900/60 text-indigo-200 px-2.5 py-0.5 rounded-full border border-indigo-700/50 text-[10px]">B1+ Target</span>
+              </div>
+
+              <div class="my-auto py-3 space-y-4">
+                <div>
+                  <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider block mb-1">Definition</span>
+                  <p id="card-definition" class="text-sm sm:text-base font-medium text-slate-100 leading-relaxed">
+                    Able to quickly recover from difficulties, setbacks, or hardships.
+                  </p>
+                </div>
+
+                <div class="p-3.5 bg-white/10 rounded-xl border border-white/10 backdrop-blur-sm">
+                  <span class="text-[10px] uppercase font-bold text-amber-300 tracking-wider block mb-1 flex items-center gap-1">
+                    <i class="ph-bold ph-quotes text-xs"></i> Example
+                  </span>
+                  <p id="card-example" class="text-xs sm:text-sm text-slate-200 italic leading-relaxed">
+                    "She was extremely <strong class="text-brand-300 font-bold not-italic">resilient</strong> after losing her job and started her own successful business."
+                  </p>
+                </div>
+              </div>
+
+              <div class="text-center text-xs text-slate-400">
+                Click card to flip back
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Flashcard Nav Controls -->
+        <div class="mt-6 flex items-center justify-between gap-3">
+          <button onclick="prevCard()" class="flex-1 py-3 px-4 bg-white hover:bg-slate-50 border border-slate-200 rounded-xl text-sm font-semibold text-slate-700 shadow-sm flex items-center justify-center gap-2 transition-all active:scale-[0.98]">
+            <i class="ph-bold ph-caret-left text-base"></i> Previous
+          </button>
+          
+          <button onclick="shuffleCards()" title="Shuffle card order" class="p-3 bg-white hover:bg-slate-50 border border-slate-200 rounded-xl text-slate-700 shadow-sm transition-all hover:text-brand-600 active:scale-95">
+            <i class="ph-bold ph-shuffle text-lg"></i>
+          </button>
+
+          <button onclick="nextCard()" class="flex-1 py-3 px-4 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-sm font-semibold shadow-md shadow-brand-500/20 flex items-center justify-center gap-2 transition-all active:scale-[0.98]">
+            Next <i class="ph-bold ph-caret-right text-base"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 2: MULTIPLE CHOICE QUIZ ==================== -->
+    <section id="section-quiz" class="hidden transition-opacity duration-300">
+      <div class="max-w-2xl mx-auto">
+        
+        <!-- Quiz Ongoing Card -->
+        <div id="quiz-box" class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 sm:p-8">
+          <!-- Quiz Header -->
+          <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
+            <div class="flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-indigo-50 text-brand-600 font-bold text-xs flex items-center justify-center" id="quiz-question-num">
+                1
+              </span>
+              <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider" id="quiz-progress-text">
+                Question 1 of 10
+              </span>
+            </div>
+            <div class="flex items-center gap-2 font-semibold text-xs">
+              <span class="text-slate-400">Score:</span>
+              <span id="quiz-score-badge" class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold border border-emerald-200">
+                0
+              </span>
+            </div>
+          </div>
+
+          <!-- Question Sentence Prompt -->
+          <div class="mb-6">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-brand-600 block mb-2">Fill in the blank</span>
+            <p id="quiz-sentence" class="text-lg sm:text-xl font-semibold text-slate-800 leading-relaxed">
+              Loading question...
+            </p>
+          </div>
+
+          <!-- Options Grid -->
+          <div id="quiz-options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+            <!-- Dynamically populated buttons -->
+          </div>
+
+          <!-- Quiz Explanation & Feedback Box (hidden until answered) -->
+          <div id="quiz-feedback-box" class="hidden p-4 rounded-xl border mb-6 transition-all">
+            <div class="flex items-start gap-3">
+              <div id="quiz-feedback-icon" class="text-xl mt-0.5"></div>
+              <div>
+                <h4 id="quiz-feedback-title" class="text-sm font-bold mb-1"></h4>
+                <p id="quiz-feedback-desc" class="text-xs text-slate-600 leading-relaxed"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quiz Action Footer -->
+          <div class="flex justify-end pt-2">
+            <button id="quiz-next-btn" onclick="nextQuizQuestion()" disabled class="px-6 py-2.5 rounded-xl font-semibold text-sm transition-all bg-slate-200 text-slate-400 cursor-not-allowed flex items-center gap-2">
+              <span>Next Question</span>
+              <i class="ph-bold ph-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz Completed Result Screen -->
+        <div id="quiz-result-box" class="hidden bg-white rounded-2xl border border-slate-200 shadow-lg p-8 text-center">
+          <div class="w-16 h-16 rounded-2xl bg-brand-50 text-brand-600 mx-auto flex items-center justify-center text-3xl mb-4 shadow-sm">
+            <i class="ph-bold ph-trophy"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900 mb-2">Quiz Completed!</h2>
+          <p id="quiz-result-subtitle" class="text-sm text-slate-500 mb-6">Great job challenging yourself with these B1+ phrases.</p>
+          
+          <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 max-w-sm mx-auto mb-8">
+            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block mb-1">Your Total Score</span>
+            <div class="text-4xl font-extrabold text-brand-600 mb-1" id="quiz-final-score">
+              8 / 10
+            </div>
+            <p id="quiz-percentage-text" class="text-xs text-slate-600 font-medium">80% Accuracy</p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <button onclick="restartQuiz()" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-md shadow-brand-500/20 flex items-center justify-center gap-2 transition-all">
+              <i class="ph-bold ph-arrow-counter-clockwise"></i> Try Again (New Questions)
+            </button>
+            <button onclick="switchTab('worksheet')" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 font-semibold text-sm text-slate-700 transition-all flex items-center justify-center gap-2">
+              <i class="ph-bold ph-article"></i> Review Vocabulary List
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== TAB 3: STUDY SHEET / PRINT VIEW ==================== -->
+    <section id="section-worksheet" class="hidden transition-opacity duration-300">
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm print:border-none print:p-0">
+        
+        <!-- Worksheet Header & Print Button -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100 mb-8">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">Vocabulary Reference & Study Guide</h2>
+            <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Comprehensive glossary for speaking and writing about role models.</p>
+          </div>
+          <button onclick="window.print()" class="no-print inline-flex items-center gap-2 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs sm:text-sm font-semibold transition-all shadow-sm">
+            <i class="ph-bold ph-printer text-base"></i> Print / Save PDF
+          </button>
+        </div>
+
+        <div id="worksheet-content" class="space-y-8">
+          <!-- Dynamically populated from vocabulary dataset -->
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Interactive Feedback Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white text-xs px-4 py-2.5 rounded-xl shadow-xl transition-all duration-300 opacity-0 pointer-events-none translate-y-2 z-50 flex items-center gap-2">
+    <i class="ph-bold ph-check text-emerald-400"></i>
+    <span id="toast-message">Action successful</span>
+  </div>
+
+  <!-- Audio Pronunciation & App Logic Script -->
+  <script>
+    /* ==========================================================
+       DATA SOURCE: 16 B1+ Vocabulary and Idiomatic Phrases
+       ========================================================== */
+    const VOCABULARY_DATA = [
+      // Part 1: Key Personality Traits & Character
+      {
+        id: 'c1',
+        term: 'Resilient',
+        pos: 'adjective',
+        category: 'traits',
+        categoryName: 'Traits & Character',
+        b1Definition: 'Able to recover and stay strong after facing hard times',
+        definition: 'Able to quickly recover from difficulties, setbacks, or hardships.',
+        example: 'She was extremely resilient after losing her job and started her own successful business.',
+        keywords: ['recover', 'bounce back', 'setbacks'],
+        clue: "Think about an elastic band that bounces back after being stretched."
+      },
+      {
+        id: 'c2',
+        term: 'Down-to-earth',
+        pos: 'adjective',
+        category: 'traits',
+        categoryName: 'Traits & Character',
+        b1Definition: 'Friendly, humble, and realistic even when successful',
+        definition: 'Practical, realistic, humble, and unpretentious despite fame or success.',
+        example: 'Despite his worldwide fame, he remains very down-to-earth and approachable.',
+        keywords: ['humble', 'realistic', 'approachable'],
+        clue: "This person doesn't act superior or arrogant; their feet stay on the ground."
+      },
+      {
+        id: 'c3',
+        term: 'Dedicated / Committed to',
+        pos: 'adjective phrase',
+        category: 'traits',
+        categoryName: 'Traits & Character',
+        b1Definition: 'Giving a lot of time, energy, and loyalty to a goal',
+        definition: 'Giving an enormous amount of time, energy, and loyalty to a specific cause or goal.',
+        example: 'She is deeply committed to improving quality education in rural areas.',
+        keywords: ['devoted', 'hardworking', 'energy'],
+        clue: "Someone who does not give up easily and works hard for an objective."
+      },
+      {
+        id: 'c4',
+        term: 'Passionate about',
+        pos: 'adjective phrase',
+        category: 'traits',
+        categoryName: 'Traits & Character',
+        b1Definition: 'Having deep excitement and strong feelings for a topic',
+        definition: 'Having immense enthusiasm, strong feelings, and deep belief in an interest or cause.',
+        example: 'He is truly passionate about environmental conservation and marine protection.',
+        keywords: ['enthusiastic', 'intense interest'],
+        clue: "Connected to strong emotions and love for a project or subject."
+      },
+      {
+        id: 'c5',
+        term: 'Compassionate',
+        pos: 'adjective',
+        category: 'traits',
+        categoryName: 'Traits & Character',
+        b1Definition: 'Caring deeply about people who are suffering or in need',
+        definition: 'Feeling or showing deep sympathy, kindness, and concern for people in pain.',
+        example: 'Her compassionate nature and warmth make her a beloved neighborhood doctor.',
+        keywords: ['kind', 'empathy', 'sympathetic'],
+        clue: "Shares the root idea of sympathy and empathy for others."
+      },
+      {
+        id: 'c6',
+        term: 'Visionary',
+        pos: 'adjective / noun',
+        category: 'traits',
+        categoryName: 'Traits & Character',
+        b1Definition: 'Having creative and forward-thinking ideas for the future',
+        definition: 'Having clear, inventive, and forward-thinking ideas about what the future could be.',
+        example: 'She was a visionary leader whose forward-thinking policies transformed the tech industry.',
+        keywords: ['inventive', 'future-thinking', 'innovative'],
+        clue: "Relates to the word 'vision'—seeing what the world can become tomorrow."
+      },
+
+      // Part 2: Actions & Accomplishments
+      {
+        id: 'c7',
+        term: 'Overcome adversity',
+        pos: 'verb phrase',
+        category: 'actions',
+        categoryName: 'Actions & Accomplishments',
+        b1Definition: 'Successfully manage and beat difficult life challenges',
+        definition: 'To achieve victory and success despite facing severe hardships and barriers.',
+        example: 'I admire him because he overcame immense adversity during his childhood in poverty.',
+        keywords: ['beat challenges', 'triumph', 'hardships'],
+        clue: "'Adversity' means misfortune or trouble; to overcome means to defeat it."
+      },
+      {
+        id: 'c8',
+        term: 'Pave the way for',
+        pos: 'verb phrase (idiom)',
+        category: 'actions',
+        categoryName: 'Actions & Accomplishments',
+        b1Definition: 'Create opportunities and make things easier for future people',
+        definition: 'To make it easier for other people to follow or accomplish something in the future.',
+        example: 'Her scientific research paved the way for modern clean renewable energy technologies.',
+        keywords: ['open doors', 'make possible', 'pioneer'],
+        clue: "Like building a smooth road so those walking behind you can travel easily."
+      },
+      {
+        id: 'c9',
+        term: 'Make a lasting impact',
+        pos: 'verb phrase',
+        category: 'actions',
+        categoryName: 'Actions & Accomplishments',
+        b1Definition: 'Produce positive changes that continue for a very long time',
+        definition: 'To create positive changes that continue to benefit people for a very long time.',
+        example: 'His selfless charity work has made a lasting impact on our local healthcare system.',
+        keywords: ['long-term change', 'leave legacy'],
+        clue: "'Lasting' means durable, enduring, or continuing into future years."
+      },
+      {
+        id: 'c10',
+        term: 'Stand up for',
+        pos: 'phrasal verb',
+        category: 'actions',
+        categoryName: 'Actions & Accomplishments',
+        b1Definition: 'Publicly defend or support someone or an important principle',
+        definition: 'To defend, support, or fight for a person or moral cause, especially when it is risky.',
+        example: 'She is never afraid to stand up for human rights even under intense government pressure.',
+        keywords: ['defend', 'support morally'],
+        clue: "Opposite of sitting down passively when injustice is happening."
+      },
+      {
+        id: 'c11',
+        term: 'Lead by example',
+        pos: 'verb phrase (idiom)',
+        category: 'actions',
+        categoryName: 'Actions & Accomplishments',
+        b1Definition: 'Show the right way to behave through your own actions',
+        definition: 'To guide and inspire others through one’s personal behavior rather than mere commands.',
+        example: 'Instead of just shouting orders from his office, the director leads by example every day.',
+        keywords: ['role model behavior', 'actions over words'],
+        clue: "Actions speak louder than words—demonstrating what to do first."
+      },
+
+      // Part 3: Influence & Personal Impact
+      {
+        id: 'c12',
+        term: 'Role model',
+        pos: 'noun phrase',
+        category: 'influence',
+        categoryName: 'Influence & Personal Impact',
+        b1Definition: 'A person you admire and want to copy or learn from',
+        definition: 'A person regarded by others as an ideal example of behavior to follow or imitate.',
+        example: 'My grandmother has always been my greatest role model throughout my adulthood.',
+        keywords: ['example to copy', 'inspiration'],
+        clue: "A standard 'model' or ideal figure whose habits you want to follow."
+      },
+      {
+        id: 'c13',
+        term: 'Look up to',
+        pos: 'phrasal verb',
+        category: 'influence',
+        categoryName: 'Influence & Personal Impact',
+        b1Definition: 'To respect and feel deep admiration towards someone',
+        definition: 'To view someone with enormous respect, admiration, and esteem.',
+        example: 'He is an older mentor whom I have always looked up to whenever I made big decisions.',
+        keywords: ['respect', 'admire highly'],
+        clue: "Physical metaphor: viewing someone with elevated respect."
+      },
+      {
+        id: 'c14',
+        term: 'Set a positive example',
+        pos: 'verb phrase',
+        category: 'influence',
+        categoryName: 'Influence & Personal Impact',
+        b1Definition: 'Behave well so that others are inspired to do the same',
+        definition: 'To behave in an admirable way that encourages others to imitate those good qualities.',
+        example: 'She sets a positive example for young athletes worldwide through fair play and discipline.',
+        keywords: ['good demonstration', 'inspire others'],
+        clue: "Showing healthy habits that invite imitation."
+      },
+      {
+        id: 'c15',
+        term: 'Have a profound influence on',
+        pos: 'verb phrase',
+        category: 'influence',
+        categoryName: 'Influence & Personal Impact',
+        b1Definition: 'Change or affect someone\'s thinking or life deeply',
+        definition: 'To affect someone or their life choices in a very deep, meaningful, and transformative way.',
+        example: 'My high school teacher had a profound influence on my decision to study environmental science.',
+        keywords: ['deep impact', 'transformative effect'],
+        clue: "'Profound' means very deep, significant, and life-changing."
+      },
+      {
+        id: 'c16',
+        term: 'Draw inspiration from',
+        pos: 'verb phrase',
+        category: 'influence',
+        categoryName: 'Influence & Personal Impact',
+        b1Definition: 'Get motivation or creative energy from someone\'s story',
+        definition: 'To receive creative energy, motivation, or courage by observing someone else’s life or work.',
+        example: 'Whenever I face moments of self-doubt, I draw inspiration from her extraordinary courage.',
+        keywords: ['get motivated', 'gain courage'],
+        clue: "'Draw' here means to take or absorb inspiration like water from a well."
+      }
+    ];
+
+    /* ==========================================================
+       WARM-UP / MEANING MATCH DATA & STATE
+       ========================================================== */
+    const WARMUP_ROUNDS = [
+      {
+        title: "Round 1: Personality Traits & Character",
+        ids: ['c1', 'c2', 'c3', 'c4', 'c5', 'c6']
+      },
+      {
+        title: "Round 2: Actions & Accomplishments",
+        ids: ['c7', 'c8', 'c9', 'c10', 'c11']
+      },
+      {
+        title: "Round 3: Influence & Personal Impact",
+        ids: ['c12', 'c13', 'c14', 'c15', 'c16']
+      }
+    ];
+
+    let currentWarmupRoundIndex = 0;
+    let selectedTermId = null;
+    let selectedDefId = null;
+    let matchedInCurrentRound = new Set();
+    let isMatchingLocked = false;
+
+    /* ==========================================================
+       QUIZ QUESTION BANK (B1+ Level Realistic Scenarios)
+       ========================================================== */
+    const QUIZ_QUESTIONS_RAW = [
+      {
+        sentence: "Even after winning an Olympic gold medal, Marco remained completely _______ and spent his afternoon helping young kids at the local gym.",
+        correct: "Down-to-earth",
+        distractors: ["Visionary", "Passionate about", "To lead by example"],
+        explanation: "'Down-to-earth' describes someone who stays humble, approachable, and practical despite enormous success or prestige."
+      },
+      {
+        sentence: "When her first two startup attempts failed due to market crashes, she proved how _______ she was by launching a thriving bakery chain.",
+        correct: "Resilient",
+        distractors: ["A role model", "Compassionate", "To look up to"],
+        explanation: "'Resilient' means having the psychological strength to recover quickly from hardship or failure."
+      },
+      {
+        sentence: "Dr. Martinez is deeply _______ promoting mental health awareness in public schools, working 60 hours a week.",
+        correct: "Dedicated / Committed to",
+        distractors: ["Visionary", "To pave the way for", "To stand up for"],
+        explanation: "We say someone is 'dedicated / committed to' a goal when they invest huge energy and loyalty into it."
+      },
+      {
+        sentence: "The nurse showed such a _______ attitude towards elderly patients that everyone asked specifically for her shifts.",
+        correct: "Compassionate",
+        distractors: ["Down-to-earth", "To set a positive example", "Resilient"],
+        explanation: "'Compassionate' emphasizes sympathetic concern, warmth, and mercy for people experiencing suffering."
+      },
+      {
+        sentence: "Steve Jobs was often called a _______ because he foresaw how smartphones would reshape human communication decades in advance.",
+        correct: "Visionary",
+        distractors: ["Role model", "Resilient", "Passionate about"],
+        explanation: "A 'visionary' is someone with forward-thinking and original ideas about the future."
+      },
+      {
+        sentence: "Her groundbreaking discoveries in computer science helped _______ future generations of female software engineers.",
+        correct: "To pave the way for",
+        distractors: ["To stand up for", "To draw inspiration from", "To overcome adversity / obstacles"],
+        explanation: "'To pave the way for' is an idiom meaning to make progress easier for those who follow in the future."
+      },
+      {
+        sentence: "He was determined to _______ by arriving earlier than anyone else and cleaning up the workshop alongside his crew.",
+        correct: "To lead by example",
+        distractors: ["To look up to", "To make a lasting impact / difference", "Compassionate"],
+        explanation: "'To lead by example' means showing others how to behave through one's own honorable actions rather than words."
+      },
+      {
+        sentence: "My elder brother is someone I truly _______; I frequently ask him for advice before making important career decisions.",
+        correct: "To look up to",
+        distractors: ["To set a positive example", "To stand up for", "Dedicated / Committed to"],
+        explanation: "'To look up to' someone means to respect, admire, and look to them with great esteem."
+      },
+      {
+        sentence: "Her heartfelt volunteer project in the flooded villages managed to _______ on the entire region's drinking water quality.",
+        correct: "To make a lasting impact / difference",
+        distractors: ["To draw inspiration from", "Down-to-earth", "To pave the way for"],
+        explanation: "'To make a lasting impact/difference' denotes creating strong, long-term positive change."
+      },
+      {
+        sentence: "It takes bravery to _______ colleagues who are being treated unfairly in the workplace.",
+        correct: "To stand up for",
+        distractors: ["To lead by example", "To overcome adversity / obstacles", "Resilient"],
+        explanation: "'To stand up for' means to defend or protect someone facing injustice."
+      },
+      {
+        sentence: "As captain of the football club, she always tries to _______ for the younger players by staying calm and respectful on the pitch.",
+        correct: "To set a positive example",
+        distractors: ["To draw inspiration from", "Visionary", "To have a profound influence on"],
+        explanation: "'To set a positive example' means demonstrating admirable conduct for others to follow."
+      },
+      {
+        sentence: "Whenever I feel overwhelmed with exam stress, I _______ my mother's calm perseverance during difficult times.",
+        correct: "To draw inspiration from",
+        distractors: ["To pave the way for", "A role model", "To stand up for"],
+        explanation: "'To draw inspiration from' means getting motivation, hope, or strength by reflecting on someone else's courage."
+      },
+      {
+        sentence: "Meeting the Nobel Prize winner as a teenager had a _______ her decision to dedicate her life to cancer biology.",
+        correct: "To have a profound influence on",
+        distractors: ["To lead by example", "Dedicated / Committed to", "To look up to"],
+        explanation: "'To have a profound influence on' highlights an extremely deep, transformative impact on a person's life trajectory."
+      },
+      {
+        sentence: "Having grown up during extreme civil conflict, the athlete had to _______ before competing on the world stage.",
+        correct: "To overcome adversity / obstacles",
+        distractors: ["To set a positive example", "Down-to-earth", "To look up to"],
+        explanation: "'To overcome adversity' describes conquering hardships, severe obstacles, or misfortune."
+      }
+    ];
+
+    /* ==========================================================
+       APP STATE
+       ========================================================== */
+    let currentCategory = 'all';
+    let filteredCards = [...VOCABULARY_DATA];
+    let currentCardIndex = 0;
+    let isFlipped = false;
+    let masteredCards = new Set();
+
+    // Quiz state
+    let activeQuizQuestions = [];
+    let currentQuizIndex = 0;
+    let quizScore = 0;
+    let quizHasAnswered = false;
+
+    /* ==========================================================
+       INIT & EVENT LISTENERS
+       ========================================================== */
+    window.addEventListener('DOMContentLoaded', () => {
+      // Load saved mastered cards from localStorage if available
+      try {
+        const saved = localStorage.getItem('admirable_mastered');
+        if (saved) {
+          masteredCards = new Set(JSON.parse(saved));
+        }
+      } catch (e) {
+        // LocalStorage fallback
+      }
+
+      updateMasteredCountUI();
+      renderCurrentCard();
+      buildWorksheetHTML();
+      setupKeyboardNav();
+      initWarmupRound();
+    });
+
+    /* ==========================================================
+       NAVIGATION / TAB SWITCHING
+       ========================================================== */
+    function switchTab(tabName) {
+      const tabs = ['warmup', 'flashcards', 'quiz', 'worksheet'];
+      tabs.forEach(tab => {
+        const btn = document.getElementById(`tab-${tab}`);
+        const sec = document.getElementById(`section-${tab}`);
+        if (tab === tabName) {
+          btn.className = "flex items-center gap-1.5 px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 bg-white text-brand-700 shadow-sm";
+          sec.classList.remove('hidden');
+        } else {
+          btn.className = "flex items-center gap-1.5 px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all duration-200";
+          sec.classList.add('hidden');
+        }
+      });
+
+      if (tabName === 'quiz' && activeQuizQuestions.length === 0) {
+        startNewQuiz();
+      }
+    }
+
+    /* ==========================================================
+       WARM-UP / MEANING MATCH IMPLEMENTATION
+       ========================================================== */
+    function setWarmupRound(roundIndex) {
+      currentWarmupRoundIndex = roundIndex;
+      [0, 1, 2].forEach(i => {
+        const btn = document.getElementById(`round-btn-${i}`);
+        if (i === roundIndex) {
+          btn.className = "px-3 py-1.5 rounded-lg bg-white text-brand-700 shadow-sm transition-all";
+        } else {
+          btn.className = "px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition-all";
+        }
+      });
+      initWarmupRound();
+    }
+
+    function initWarmupRound() {
+      selectedTermId = null;
+      selectedDefId = null;
+      matchedInCurrentRound.clear();
+      isMatchingLocked = false;
+
+      const round = WARMUP_ROUNDS[currentWarmupRoundIndex];
+      document.getElementById('match-round-title').innerText = round.title;
+      document.getElementById('match-completed-banner').classList.add('hidden');
+
+      const roundItems = VOCABULARY_DATA.filter(item => round.ids.includes(item.id));
+
+      // Terms array
+      const termsList = [...roundItems];
+      // Definitions array (shuffled separately)
+      const defsList = [...roundItems];
+      for (let i = defsList.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [defsList[i], defsList[j]] = [defsList[j], defsList[i]];
+      }
+
+      // Render Column A (Terms)
+      const colTerms = document.getElementById('col-terms');
+      colTerms.innerHTML = '';
+      termsList.forEach(item => {
+        const btn = document.createElement('button');
+        btn.id = `match-term-${item.id}`;
+        btn.dataset.id = item.id;
+        btn.className = "term-card w-full text-left p-3.5 bg-white border border-slate-200/90 hover:border-brand-400 hover:bg-brand-50/20 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 shadow-sm transition-all flex items-center justify-between";
+        btn.innerHTML = `
+          <span>${item.term}</span>
+          <span class="status-icon text-xs text-slate-300"><i class="ph-bold ph-arrow-right"></i></span>
+        `;
+        btn.onclick = () => onTermSelected(item.id);
+        colTerms.appendChild(btn);
+      });
+
+      // Render Column B (B1 Definitions)
+      const colDefs = document.getElementById('col-defs');
+      colDefs.innerHTML = '';
+      defsList.forEach(item => {
+        const btn = document.createElement('button');
+        btn.id = `match-def-${item.id}`;
+        btn.dataset.id = item.id;
+        btn.className = "def-card w-full text-left p-3.5 bg-white border border-slate-200/90 hover:border-indigo-400 hover:bg-indigo-50/20 rounded-xl text-xs sm:text-sm text-slate-700 shadow-sm transition-all flex items-center justify-between";
+        btn.innerHTML = `
+          <span class="pr-2">${item.b1Definition}</span>
+          <span class="status-icon text-xs text-slate-300"><i class="ph-bold ph-target"></i></span>
+        `;
+        btn.onclick = () => onDefSelected(item.id);
+        colDefs.appendChild(btn);
+      });
+
+      updateMatchProgressUI();
+    }
+
+    function onTermSelected(id) {
+      if (isMatchingLocked || matchedInCurrentRound.has(id)) return;
+
+      // Deselect old
+      if (selectedTermId) {
+        const prev = document.getElementById(`match-term-${selectedTermId}`);
+        if (prev && !matchedInCurrentRound.has(selectedTermId)) {
+          prev.className = "term-card w-full text-left p-3.5 bg-white border border-slate-200/90 hover:border-brand-400 hover:bg-brand-50/20 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 shadow-sm transition-all flex items-center justify-between";
+        }
+      }
+
+      selectedTermId = id;
+      const current = document.getElementById(`match-term-${id}`);
+      current.className = "term-card w-full text-left p-3.5 bg-brand-50 border-2 border-brand-500 rounded-xl text-xs sm:text-sm font-bold text-brand-900 shadow-sm transition-all flex items-center justify-between ring-2 ring-brand-500/20";
+
+      // If definition was already clicked, evaluate
+      if (selectedDefId) {
+        checkPairMatch();
+      }
+    }
+
+    function onDefSelected(id) {
+      if (isMatchingLocked || matchedInCurrentRound.has(id)) return;
+
+      // Deselect old
+      if (selectedDefId) {
+        const prev = document.getElementById(`match-def-${selectedDefId}`);
+        if (prev && !matchedInCurrentRound.has(selectedDefId)) {
+          prev.className = "def-card w-full text-left p-3.5 bg-white border border-slate-200/90 hover:border-indigo-400 hover:bg-indigo-50/20 rounded-xl text-xs sm:text-sm text-slate-700 shadow-sm transition-all flex items-center justify-between";
+        }
+      }
+
+      selectedDefId = id;
+      const current = document.getElementById(`match-def-${id}`);
+      current.className = "def-card w-full text-left p-3.5 bg-indigo-50 border-2 border-indigo-500 rounded-xl text-xs sm:text-sm font-medium text-indigo-950 shadow-sm transition-all flex items-center justify-between ring-2 ring-indigo-500/20";
+
+      // If term was already selected, evaluate
+      if (selectedTermId) {
+        checkPairMatch();
+      }
+    }
+
+    function checkPairMatch() {
+      if (!selectedTermId || !selectedDefId) return;
+
+      isMatchingLocked = true;
+      const termBtn = document.getElementById(`match-term-${selectedTermId}`);
+      const defBtn = document.getElementById(`match-def-${selectedDefId}`);
+
+      if (selectedTermId === selectedDefId) {
+        // MATCH SUCCESS
+        matchedInCurrentRound.add(selectedTermId);
+        
+        termBtn.className = "term-card w-full text-left p-3.5 bg-emerald-50 border-2 border-emerald-500 rounded-xl text-xs sm:text-sm font-bold text-emerald-950 shadow-sm transition-all flex items-center justify-between";
+        termBtn.querySelector('.status-icon').innerHTML = '<i class="ph-fill ph-check-circle text-emerald-600 text-base"></i>';
+        
+        defBtn.className = "def-card w-full text-left p-3.5 bg-emerald-50 border-2 border-emerald-500 rounded-xl text-xs sm:text-sm text-emerald-950 shadow-sm transition-all flex items-center justify-between";
+        defBtn.querySelector('.status-icon').innerHTML = '<i class="ph-fill ph-check-circle text-emerald-600 text-base"></i>';
+
+        showToast("Correct match!");
+        selectedTermId = null;
+        selectedDefId = null;
+        isMatchingLocked = false;
+        updateMatchProgressUI();
+        checkRoundFinished();
+      } else {
+        // MISMATCH
+        termBtn.className = "term-card w-full text-left p-3.5 bg-rose-50 border-2 border-rose-400 rounded-xl text-xs sm:text-sm font-semibold text-rose-950 shadow-sm transition-all flex items-center justify-between animate-pulse";
+        defBtn.className = "def-card w-full text-left p-3.5 bg-rose-50 border-2 border-rose-400 rounded-xl text-xs sm:text-sm text-rose-950 shadow-sm transition-all flex items-center justify-between animate-pulse";
+
+        setTimeout(() => {
+          if (!matchedInCurrentRound.has(termBtn.dataset.id)) {
+            termBtn.className = "term-card w-full text-left p-3.5 bg-white border border-slate-200/90 hover:border-brand-400 hover:bg-brand-50/20 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 shadow-sm transition-all flex items-center justify-between";
+          }
+          if (!matchedInCurrentRound.has(defBtn.dataset.id)) {
+            defBtn.className = "def-card w-full text-left p-3.5 bg-white border border-slate-200/90 hover:border-indigo-400 hover:bg-indigo-50/20 rounded-xl text-xs sm:text-sm text-slate-700 shadow-sm transition-all flex items-center justify-between";
+          }
+          selectedTermId = null;
+          selectedDefId = null;
+          isMatchingLocked = false;
+        }, 750);
+      }
+    }
+
+    function updateMatchProgressUI() {
+      const total = WARMUP_ROUNDS[currentWarmupRoundIndex].ids.length;
+      const matched = matchedInCurrentRound.size;
+      document.getElementById('match-progress-text').innerText = `Matched: ${matched} / ${total}`;
+      const pct = (matched / total) * 100;
+      document.getElementById('match-progress-bar').style.width = `${pct}%`;
+    }
+
+    function checkRoundFinished() {
+      const total = WARMUP_ROUNDS[currentWarmupRoundIndex].ids.length;
+      if (matchedInCurrentRound.size === total) {
+        setTimeout(() => {
+          const banner = document.getElementById('match-completed-banner');
+          banner.classList.remove('hidden');
+          const nextBtn = document.getElementById('btn-next-round');
+
+          if (currentWarmupRoundIndex < WARMUP_ROUNDS.length - 1) {
+            document.getElementById('match-completed-message').innerText = "Excellent work! Ready to discover the next group of phrases?";
+            nextBtn.innerHTML = `<span>Next: Round ${currentWarmupRoundIndex + 2}</span> <i class="ph-bold ph-arrow-right"></i>`;
+          } else {
+            document.getElementById('match-completed-message').innerText = "Superb! You matched all 16 expressions. Now practice deeper nuances in Flashcards or test yourself in the Quiz.";
+            nextBtn.innerHTML = `<span>Proceed to Flashcards</span> <i class="ph-bold ph-cards"></i>`;
+          }
+        }, 400);
+      }
+    }
+
+    function nextWarmupRoundOrFlashcards() {
+      if (currentWarmupRoundIndex < WARMUP_ROUNDS.length - 1) {
+        setWarmupRound(currentWarmupRoundIndex + 1);
+      } else {
+        switchTab('flashcards');
+      }
+    }
+
+    function resetCurrentMatchRound() {
+      initWarmupRound();
+    }
+
+    function revealMatchClue() {
+      const targetId = selectedTermId || selectedDefId;
+      if (!targetId) {
+        showToast("Select a word in Column A first to see its hint!");
+        return;
+      }
+      const item = VOCABULARY_DATA.find(v => v.id === targetId);
+      if (item && item.clue) {
+        showToast(`💡 Hint for "${item.term}": ${item.clue}`);
+      }
+    }
+
+    /* ==========================================================
+       FLASHCARDS LOGIC
+       ========================================================== */
+    function setFilter(category) {
+      currentCategory = category;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        if (btn.dataset.category === category) {
+          btn.className = "filter-btn active-filter px-3 py-1.5 rounded-full text-xs font-semibold bg-brand-600 text-white shadow-sm transition-all";
+        } else {
+          btn.className = "filter-btn px-3 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 transition-all";
+        }
+      });
+
+      if (category === 'all') {
+        filteredCards = [...VOCABULARY_DATA];
+      } else {
+        filteredCards = VOCABULARY_DATA.filter(item => item.category === category);
+      }
+
+      currentCardIndex = 0;
+      resetCardFlipAnimation();
+      renderCurrentCard();
+    }
+
+    function toggleCardFlip() {
+      const card = document.getElementById('flashcard-element');
+      isFlipped = !isFlipped;
+      if (isFlipped) {
+        card.classList.add('rotate-y-180');
+      } else {
+        card.classList.remove('rotate-y-180');
+      }
+    }
+
+    function resetCardFlipAnimation() {
+      isFlipped = false;
+      document.getElementById('flashcard-element').classList.remove('rotate-y-180');
+    }
+
+    function renderCurrentCard() {
+      if (filteredCards.length === 0) return;
+      const card = filteredCards[currentCardIndex];
+
+      // Front Elements
+      document.getElementById('card-term').innerText = card.term;
+      document.getElementById('card-pos').innerText = card.pos;
+      document.getElementById('card-category-badge').innerText = card.categoryName;
+      
+      // Indicators
+      const isMastered = masteredCards.has(card.id);
+      const masteredIndicator = document.getElementById('card-mastered-indicator');
+      const masterBtn = document.getElementById('card-btn-master');
+
+      if (isMastered) {
+        masteredIndicator.classList.remove('hidden');
+        masteredIndicator.classList.add('flex');
+        masterBtn.innerHTML = `<i class="ph-fill ph-check-circle text-emerald-400"></i> Mastered`;
+        masterBtn.className = "text-xs px-3 py-1 rounded-full border border-emerald-500 text-emerald-300 bg-emerald-950/40 flex items-center gap-1";
+      } else {
+        masteredIndicator.classList.add('hidden');
+        masteredIndicator.classList.remove('flex');
+        masterBtn.innerHTML = `<i class="ph-bold ph-check"></i> Mark Mastered`;
+        masterBtn.className = "text-xs px-3 py-1 rounded-full border border-slate-600 text-slate-300 hover:border-emerald-400 hover:text-emerald-400 transition-all flex items-center gap-1";
+      }
+
+      // Back Elements
+      document.getElementById('card-definition').innerText = card.definition;
+      
+      // Format example with highlight
+      let formattedExample = card.example;
+      const cleanTerm = card.term.replace(/^To\s+/i, '').replace(/^A\s+/i, '').split('/')[0].trim();
+      const regex = new RegExp(`(${cleanTerm}|${card.term})`, 'gi');
+      formattedExample = formattedExample.replace(regex, `<strong class="text-brand-300 font-bold not-italic">$1</strong>`);
+      document.getElementById('card-example').innerHTML = `"${formattedExample}"`;
+
+      // Progress Tracker
+      document.getElementById('card-index-indicator').innerText = `Card ${currentCardIndex + 1} of ${filteredCards.length}`;
+      const percentage = ((currentCardIndex + 1) / filteredCards.length) * 100;
+      document.getElementById('card-progress-bar').style.width = `${percentage}%`;
+    }
+
+    function nextCard() {
+      if (currentCardIndex < filteredCards.length - 1) {
+        currentCardIndex++;
+      } else {
+        currentCardIndex = 0; // Loop back
+      }
+      resetCardFlipAnimation();
+      setTimeout(renderCurrentCard, 150);
+    }
+
+    function prevCard() {
+      if (currentCardIndex > 0) {
+        currentCardIndex--;
+      } else {
+        currentCardIndex = filteredCards.length - 1;
+      }
+      resetCardFlipAnimation();
+      setTimeout(renderCurrentCard, 150);
+    }
+
+    function shuffleCards() {
+      for (let i = filteredCards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [filteredCards[i], filteredCards[j]] = [filteredCards[j], filteredCards[i]];
+      }
+      currentCardIndex = 0;
+      resetCardFlipAnimation();
+      renderCurrentCard();
+      showToast("Deck shuffled!");
+    }
+
+    function toggleMasteryCurrent() {
+      const card = filteredCards[currentCardIndex];
+      if (masteredCards.has(card.id)) {
+        masteredCards.delete(card.id);
+        showToast("Removed from mastered");
+      } else {
+        masteredCards.add(card.id);
+        showToast("Card marked as mastered!");
+      }
+      saveMastered();
+      updateMasteredCountUI();
+      renderCurrentCard();
+    }
+
+    function resetMastered() {
+      masteredCards.clear();
+      saveMastered();
+      updateMasteredCountUI();
+      renderCurrentCard();
+      showToast("Mastered progress reset");
+    }
+
+    function updateMasteredCountUI() {
+      document.getElementById('mastered-count').innerText = masteredCards.size;
+      document.getElementById('total-available-count').innerText = VOCABULARY_DATA.length;
+    }
+
+    function saveMastered() {
+      try {
+        localStorage.setItem('admirable_mastered', JSON.stringify([...masteredCards]));
+      } catch (e) {}
+    }
+
+    // Text-to-Speech audio support
+    function speakWord() {
+      if ('speechSynthesis' in window) {
+        const textToSpeak = filteredCards[currentCardIndex].term.replace(/\//g, ' or ');
+        const utterance = new SpeechSynthesisUtterance(textToSpeak);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.9;
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(utterance);
+      } else {
+        showToast("Speech synthesis not supported in this browser.");
+      }
+    }
+
+    function setupKeyboardNav() {
+      window.addEventListener('keydown', (e) => {
+        // Only active if flashcards section is visible
+        if (document.getElementById('section-flashcards').classList.contains('hidden')) return;
+
+        if (e.code === 'Space') {
+          e.preventDefault();
+          toggleCardFlip();
+        } else if (e.code === 'ArrowRight') {
+          e.preventDefault();
+          nextCard();
+        } else if (e.code === 'ArrowLeft') {
+          e.preventDefault();
+          prevCard();
+        }
+      });
+    }
+
+    /* ==========================================================
+       MULTIPLE CHOICE QUIZ LOGIC
+       ========================================================== */
+    function startNewQuiz() {
+      // Shuffle & select 10 questions from bank
+      const pool = [...QUIZ_QUESTIONS_RAW];
+      for (let i = pool.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pool[i], pool[j]] = [pool[j], pool[i]];
+      }
+      activeQuizQuestions = pool.slice(0, 10);
+      currentQuizIndex = 0;
+      quizScore = 0;
+
+      document.getElementById('quiz-box').classList.remove('hidden');
+      document.getElementById('quiz-result-box').classList.add('hidden');
+      renderQuizQuestion();
+    }
+
+    function renderQuizQuestion() {
+      quizHasAnswered = false;
+      const q = activeQuizQuestions[currentQuizIndex];
+
+      document.getElementById('quiz-question-num').innerText = currentQuizIndex + 1;
+      document.getElementById('quiz-progress-text').innerText = `Question ${currentQuizIndex + 1} of ${activeQuizQuestions.length}`;
+      document.getElementById('quiz-score-badge').innerText = quizScore;
+      document.getElementById('quiz-sentence').innerHTML = q.sentence.replace('_______', `<span class="inline-block px-3 py-0.5 border-b-2 border-brand-500 text-brand-600 bg-brand-50/50 rounded font-bold">_______</span>`);
+
+      // Hide feedback box
+      const feedbackBox = document.getElementById('quiz-feedback-box');
+      feedbackBox.classList.add('hidden');
+
+      // Next button disabled state
+      const nextBtn = document.getElementById('quiz-next-btn');
+      nextBtn.disabled = true;
+      nextBtn.className = "px-6 py-2.5 rounded-xl font-semibold text-sm transition-all bg-slate-100 text-slate-400 cursor-not-allowed flex items-center gap-2";
+
+      // Prepare options (correct + 3 distractors) and shuffle
+      const options = [q.correct, ...q.distractors];
+      for (let i = options.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [options[i], options[j]] = [options[j], options[i]];
+      }
+
+      // Populate buttons
+      const container = document.getElementById('quiz-options-container');
+      container.innerHTML = '';
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = "option-btn text-left p-4 rounded-xl border border-slate-200 hover:border-brand-500 hover:bg-brand-50/30 text-slate-800 font-medium text-sm transition-all flex items-center justify-between";
+        btn.innerHTML = `
+          <span>${opt}</span>
+          <span class="w-5 h-5 rounded-full border border-slate-300 flex items-center justify-center text-xs text-transparent indicator">✔</span>
+        `;
+        btn.onclick = () => selectQuizAnswer(opt, btn);
+        container.appendChild(btn);
+      });
+    }
+
+    function selectQuizAnswer(selectedOption, clickedButton) {
+      if (quizHasAnswered) return;
+      quizHasAnswered = true;
+
+      const q = activeQuizQuestions[currentQuizIndex];
+      const isCorrect = (selectedOption === q.correct);
+      const allButtons = document.querySelectorAll('.option-btn');
+
+      // Disable all options and highlight correct vs incorrect
+      allButtons.forEach(btn => {
+        btn.disabled = true;
+        const text = btn.querySelector('span').innerText.trim();
+        const indicator = btn.querySelector('.indicator');
+
+        if (text === q.correct) {
+          btn.className = "option-btn text-left p-4 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-950 font-semibold text-sm transition-all flex items-center justify-between";
+          indicator.className = "w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs font-bold";
+          indicator.innerHTML = '✓';
+        } else if (btn === clickedButton && !isCorrect) {
+          btn.className = "option-btn text-left p-4 rounded-xl border-2 border-rose-500 bg-rose-50 text-rose-950 font-semibold text-sm transition-all flex items-center justify-between";
+          indicator.className = "w-5 h-5 rounded-full bg-rose-500 text-white flex items-center justify-center text-xs font-bold";
+          indicator.innerHTML = '✕';
+        } else {
+          btn.className = "option-btn text-left p-4 rounded-xl border border-slate-200 bg-slate-50/60 text-slate-400 font-medium text-sm transition-all flex items-center justify-between opacity-60";
+        }
+      });
+
+      // Update sentence visually with correct word
+      document.getElementById('quiz-sentence').innerHTML = q.sentence.replace('_______', `<span class="inline-block px-2.5 py-0.5 rounded font-bold ${isCorrect ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">${q.correct}</span>`);
+
+      // Feedback Box updates
+      const feedbackBox = document.getElementById('quiz-feedback-box');
+      const feedbackIcon = document.getElementById('quiz-feedback-icon');
+      const feedbackTitle = document.getElementById('quiz-feedback-title');
+      const feedbackDesc = document.getElementById('quiz-feedback-desc');
+
+      feedbackBox.classList.remove('hidden');
+      if (isCorrect) {
+        quizScore++;
+        document.getElementById('quiz-score-badge').innerText = quizScore;
+        feedbackBox.className = "p-4 rounded-xl border border-emerald-200 bg-emerald-50/80 mb-6 transition-all text-emerald-900";
+        feedbackIcon.innerHTML = `<i class="ph-fill ph-check-circle text-emerald-600"></i>`;
+        feedbackTitle.innerText = "Excellent! That is correct.";
+      } else {
+        feedbackBox.className = "p-4 rounded-xl border border-rose-200 bg-rose-50/80 mb-6 transition-all text-rose-900";
+        feedbackIcon.innerHTML = `<i class="ph-fill ph-x-circle text-rose-600"></i>`;
+        feedbackTitle.innerText = `Not quite right. The answer is: ${q.correct}`;
+      }
+      feedbackDesc.innerText = q.explanation;
+
+      // Enable Next Button
+      const nextBtn = document.getElementById('quiz-next-btn');
+      nextBtn.disabled = false;
+      nextBtn.className = "px-6 py-2.5 rounded-xl font-semibold text-sm transition-all bg-brand-600 hover:bg-brand-700 text-white shadow-md shadow-brand-500/20 cursor-pointer flex items-center gap-2";
+    }
+
+    function nextQuizQuestion() {
+      if (currentQuizIndex < activeQuizQuestions.length - 1) {
+        currentQuizIndex++;
+        renderQuizQuestion();
+      } else {
+        showQuizResults();
+      }
+    }
+
+    function showQuizResults() {
+      document.getElementById('quiz-box').classList.add('hidden');
+      const resultBox = document.getElementById('quiz-result-box');
+      resultBox.classList.remove('hidden');
+
+      const total = activeQuizQuestions.length;
+      document.getElementById('quiz-final-score').innerText = `${quizScore} / ${total}`;
+      const percentage = Math.round((quizScore / total) * 100);
+      document.getElementById('quiz-percentage-text').innerText = `${percentage}% Accuracy`;
+
+      const sub = document.getElementById('quiz-result-subtitle');
+      if (percentage >= 80) {
+        sub.innerText = "Outstanding! You have mastered these phrases and are ready to use them in IELTS or FCE exams.";
+      } else if (percentage >= 60) {
+        sub.innerText = "Good effort! Review the flashcards once more to solidify your understanding of collocations.";
+      } else {
+        sub.innerText = "Keep practicing! Check out the Study Sheet tab to review definitions before trying again.";
+      }
+    }
+
+    function restartQuiz() {
+      startNewQuiz();
+    }
+
+    /* ==========================================================
+       WORKSHEET / REFERENCE GENERATOR
+       ========================================================== */
+    function buildWorksheetHTML() {
+      const container = document.getElementById('worksheet-content');
+      const categories = [
+        { id: 'traits', title: '1. Key Personality Traits & Character' },
+        { id: 'actions', title: '2. Actions & Accomplishments' },
+        { id: 'influence', title: '3. Influence & Personal Impact' }
+      ];
+
+      let html = '';
+      categories.forEach(cat => {
+        const items = VOCABULARY_DATA.filter(v => v.category === cat.id);
+        html += `
+          <div class="break-inside-avoid">
+            <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-3 pb-1 border-b border-slate-200 flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-brand-600"></span>
+              ${cat.title}
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+        `;
+
+        items.forEach(item => {
+          html += `
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/80 text-sm">
+              <div class="flex items-baseline justify-between mb-1">
+                <h4 class="font-bold text-slate-900 text-base">${item.term}</h4>
+                <span class="text-xs italic text-slate-500 font-medium">${item.pos}</span>
+              </div>
+              <p class="text-xs text-slate-700 mb-2 leading-relaxed"><strong>Definition:</strong> ${item.definition}</p>
+              <div class="bg-white p-2.5 rounded-lg border border-slate-200/60 text-xs italic text-slate-600">
+                "${item.example}"
+              </div>
+            </div>
+          `;
+        });
+
+        html += `
+            </div>
+          </div>
+        `;
+      });
+
+      // Add extra speaking exam tips at bottom of sheet
+      html += `
+        <div class="break-inside-avoid mt-8 p-5 bg-violet-50/70 border border-violet-100 rounded-2xl text-xs sm:text-sm text-slate-700">
+          <h4 class="font-bold text-brand-700 uppercase tracking-wider text-xs mb-2 flex items-center gap-1.5">
+            <i class="ph-bold ph-lightbulb"></i> Speaking Exam Sentence Starters (IELTS Speaking Part 2 & FCE)
+          </h4>
+          <ul class="list-disc list-inside space-y-1 text-slate-700">
+            <li>"The person who has had the most profound influence on me is definitely..."</li>
+            <li>"What strikes me most about their character is how down-to-earth they remained despite..."</li>
+            <li>"Not only did she overcome tremendous adversity, but she also paved the way for..."</li>
+            <li>"Whenever I find myself in a difficult dilemma, I try to draw inspiration from how they..."</li>
+          </ul>
+        </div>
+      `;
+
+      container.innerHTML = html;
+    }
+
+    /* ==========================================================
+       UI UTILITY (TOAST)
+       ========================================================== */
+    let toastTimer;
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-message').innerText = msg;
+      toast.classList.remove('opacity-0', 'translate-y-2');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-2');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+      }, 2200);
+    }
+  </script>
+</body>
+</html>
